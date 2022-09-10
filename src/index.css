@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.link{
+  text-decoration: none;
+}
+
+ /*Products Card */
+.card {
+  transition: all .1s ease;
+}
+.card:hover{
+  transform: scale(1.015);
+  box-shadow: 1px 1px 2px #444343;
+}
+
+ /* ProductDetail */
+.ProductDetail .img{
+  transition: all .3s ease;
+}
+.ProductDetail .img:hover{
+  transform: scale(1.1);
+}
+
+/*    */
