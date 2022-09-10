@@ -62,7 +62,7 @@ const Cart = () => {
       <div className='w-50 d-flex align-items-center justify-content-between gap-3'>
         <NavLink to={"/Products/"} className="w-100 btn btn-outline-primary my-3 py-2 fs-5">
           Back to Product List </NavLink>
-        {state != 0 && checkOut() }
+        {state !== 0 && checkOut() }
       </div>
     </div>
   )

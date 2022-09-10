@@ -9,20 +9,22 @@ import Contact from './components/Contact';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart'
 import CheckOut from './components/CheckOut'
+
 import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <div>
+      <div >
         <Header />
       </div>
-      <Routes>
+
+      <Routes className="page-bodey">
         <Route path="/" index element={<Home />} />
 
         <Route path={'/Products'}>
-        <Route index element={<Products />} />
-        <Route path=":id" element={<ProductDetail />} />
+          <Route index element={<Products />} />
+          <Route path=":id" element={<ProductDetail />} />
         </Route>
 
         <Route path="/About" element={<About />} />
@@ -30,7 +32,8 @@ function App() {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Contact" element={<Contact />} />
       </Routes>
-      <div>
+
+      <div className='page-footer'>
         <Footer />
       </div>
     </div>
