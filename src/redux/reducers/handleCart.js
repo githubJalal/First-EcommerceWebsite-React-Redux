@@ -32,7 +32,12 @@ const handleCart = (state = cart, action) => {
                     x.id === product.id ? { ...x, qty: x.qty - 1 } : x
                 );
             }
-
+        
+            case "DEL_ONE_ITEM":
+                return state = state.filter((x) => {
+                    return  x.id !== product.id
+                });
+                
         default:
             return state;
     }

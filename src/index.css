@@ -16,6 +16,12 @@ code {
     monospace;
 }
 
+.textNoWrap{
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+}
+
 .link, .a{
   text-decoration: none;
 }

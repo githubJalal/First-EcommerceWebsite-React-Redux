@@ -8,9 +8,9 @@ import { NavLink } from "react-router-dom"
 
 const Header = () => {
     return (
-        <div className='page-header shadow-sm' >
+        <div className='page-header shadow' >
             <Navbar bg="light" expand="lg">
-                <Container fluid className='py-3'>
+                <Container fluid className='py-1'>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll" className='d-flex justify-content-between'>
 
@@ -23,8 +23,8 @@ const Header = () => {
                             <NavLink to="/Contact" className="link me-2 text-secondary" >Contact</NavLink>
                         </Nav>
 
-                        <Navbar.Brand to="/" className='mx-auto fw-bold' style={{ letterSpacing: "2px" }}>
-                            <NavLink to="/" className="link text-dark me-5" >My First Electronic Market</NavLink></Navbar.Brand>
+                        <Navbar.Brand className='mx-auto' style={{ letterSpacing: "2px" }}>
+                            <NavLink to="/" className="link fw-bold fs-1 text-dark me-5" >My First Electronic Market</NavLink></Navbar.Brand>
                         <div className='d-flex'>
                         <Login />
                         <Signup />

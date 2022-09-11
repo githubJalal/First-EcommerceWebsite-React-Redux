@@ -34,7 +34,7 @@ const CheckOut = () => {
                         </li>
                     </ul>
 
-                    <form className="card p-2">
+                    <form className="card p-2" onSubmit={(event) => event.preventDefault()}>
                         <div className="input-group">
                             <input type="text" className="form-control" placeholder="Promo code" />
                             <div className="input-group-append">
@@ -45,7 +45,7 @@ const CheckOut = () => {
                 </div>
                 <div className="col-md-8 order-md-1">
                     <h4 className="mb-3">Billing address</h4>
-                    <form className="needs-validation" novalidate="">
+                    <form className="needs-validation" novalidate="" onSubmit={(event) => event.preventDefault()}>
                         <div className="row">
                             <div className="col-md-6 mb-3">
                                 <label htmlFor="firstName">First name</label>

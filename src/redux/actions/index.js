@@ -13,3 +13,10 @@ export const addToCart = (product) => {
       payload: product,
     };
   };
+
+  export const delProductFromCart = (product) => {
+    return {
+      type: "DEL_ONE_ITEM",
+      payload: product,
+    };
+  };

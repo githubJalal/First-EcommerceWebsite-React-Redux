@@ -1,52 +1,103 @@
-import { useEffect,useState } from 'react';
-import Card from 'react-bootstrap/Card';
-import { Link } from "react-router-dom"
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Products = () => {
-  const dataAddress = 'https://fakestoreapi.com/products';
+
+  const ApiDataAddress = 'https://fakestoreapi.com/products';
   const [productList, setProductList] = useState([])
+  const [filter, setFilter] = useState(productList)
+  const [loading, setLoading] = useState(false)
+  let componentMounted = true;
 
   useEffect(() => {
-    axios.get(dataAddress)
+    setLoading(true);
+    axios.get(ApiDataAddress)
       .then((data) => {
-        console.log(data.data)
-        setProductList(data.data)
+        if (componentMounted) {
+          setProductList(data.data)
+          setFilter(data.data);
+          setLoading(false);
+        }
+        return () => {
+          componentMounted = (false);
+        }
       })
       .catch((error) => (console.log(error)))
   }, [])
 
-
-  const cardItem = (item) => {
+  const Loading = () => {
     return (
-      <Card className='card mb-4 py-3 px-1' key={item.id} style={{ width: '18rem' }}>
-        <Card.Img variant="top" style={{ height: "19rem" }} src={item.image} alt={item.title} />
-        <Card.Body >
-          <Card.Title style={{fontWeight:'600', color:"#15104F", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{item.title}</Card.Title>
-          <p className=" lead fs-4 fw-bold primary">$ {item.price}</p>
-          <Link to={`/Products/${item.id}`} className="btn btn-outline-primary">Show Details and Buy</Link>
-        </Card.Body>
-      </Card>
+      <>
+        <div className="col-md-3 ">
+          <Skeleton height="350px" />
+        </div>
+        <div className="col-md-3 ">
+          <Skeleton height="350px" />
+        </div>
+        <div className="col-md-3 ">
+          <Skeleton height="350px" />
+        </div>
+        <div className="col-md-3 ">
+          <Skeleton height="350px" />
+        </div>
+      </>
     )
   }
 
+  const filterProduct = (cat) => {
+    const updatedList = productList.filter((x) => x.category === cat)
+    setFilter(updatedList)
+  }
+
+  const ShowProducts = () => {
+    return (
+      <>
+        {filter.map((Product) => {
+          return (
+            <>
+              <div className="col-md-3 mb-4">
+                <div className="card h-100 text-center p-3" key={Product.id}>
+                  <img src={Product.image} className="card-img-top" alt={Product.title} height="330px" />
+                  <div className="card-body d-flex flex-column  align-items-start gap-2">
+                    <h5 style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+                      className="card-title fw-bold text-primary mb-0">{Product.title.substring(0, 21)}...</h5>
+                    <p className="card-text lead fw-bold">$ {Product.price}</p>
+                    <Link to={`/Products/${Product.id}`} className="btn btn-outline-success fs-5 w-100">Buy Now</Link>
+                  </div>
+                </div>
+              </div>
+            </>
+          )
+        })}
+      </>
+    )
+  }
+
+
   return (
-    <div className=''>
-      <div className='containet py-5'>
-        <div className='row '>
-          <div className='col-12'>
-            <h1 style={{marginLeft:"5rem"}}>Product List</h1>
-            <hr className='text-muted mx-5 mt-5' />
-          </div>
+    <div className="container my-5 py-5">
+
+      <div className="row">
+        <div className="col-12 mb-5">
+          <h1 className="display-6 fw-bolder ">Latest Products List: </h1>
+          <hr />
         </div>
       </div>
 
-      <div className="container">
-        <div className="row justify-content-around">
-          {productList.map(cardItem)}
+      <div className="row justify-content-center">
+        <div className="buttons d-flex justify-content-center mb-5 pb-5 gap-2">
+          <button className="btn btn-outline-dark" onClick={() => setFilter(productList)}>All</button>
+          <button className="btn btn-outline-dark" onClick={() => filterProduct("men's clothing")}>men's clothing</button>
+          <button className="btn btn-outline-dark" onClick={() => filterProduct("women's clothing")}>women's clothing</button>
+          <button className="btn btn-outline-dark" onClick={() => filterProduct("jewelery")}>jewelery</button>
+          <button className="btn btn-outline-dark" onClick={() => filterProduct("electronics")}>electronics</button>
         </div>
-
+        {loading ? <Loading /> : <ShowProducts />}
       </div>
+
     </div>
   )
 }
