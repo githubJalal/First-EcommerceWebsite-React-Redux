@@ -30,7 +30,7 @@ const Signup = () => {
             <span className='fa fa-facebook me-2'></span>Sign up With facebook
           </Button>
 
-          <Form>
+          <Form onSubmit={(event) => event.preventDefault()}>
             <Form.Group className="mb-1" controlId="formBasicEmail">
               <Form.Label htmlFor='input'>Username</Form.Label>
               <Form.Control type="text" placeholder="Enter Username" />

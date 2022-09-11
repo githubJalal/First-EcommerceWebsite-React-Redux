@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { addToCart, delFromCart,delProductFromCart } from "../redux/actions/index";
-import Skeleton from 'react-loading-skeleton'
 
 const Cart = () => {
   const state = useSelector((state) =>  state.rootReducers.handleCart);
@@ -23,15 +22,6 @@ const Cart = () => {
       </div>
     );
   };
-  const Loading = () => {
-    return (
-      <>
-        <div className="col-md-3 ">
-          <Skeleton height="200px" />
-        </div>
-      </>
-    )
-  }
   const cartItems = (cartItem) => {
     return (
       <>
@@ -47,7 +37,7 @@ const Cart = () => {
                       </div>
                       <div className="col-md-8">
                             <h3>{cartItem.title}</h3>
-                            <p className="lead fw-bold">{cartItem.qty} X ${cartItem.price} = $ {cartItem.qty * cartItem.price} </p>
+                            <p className="lead fw-bold">{cartItem.qty} X $ {cartItem.price}  =  $ {(cartItem.qty * cartItem.price).toFixed(2)} </p>
                             <button className="btn btn-outline-dark me-4" onClick={() => handleDel(cartItem)} >
                                <i className="fa fa-minus"></i></button>
                             <button className="btn btn-outline-dark" onClick={() => handleAdd(cartItem)}>

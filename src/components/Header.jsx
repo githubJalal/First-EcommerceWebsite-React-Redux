@@ -24,7 +24,7 @@ const Header = () => {
                         </Nav>
 
                         <Navbar.Brand className='mx-auto' style={{ letterSpacing: "2px" }}>
-                            <NavLink to="/" className="link fw-bold fs-1 text-dark me-5" >My First Electronic Market</NavLink></Navbar.Brand>
+                            <NavLink to="/" className="link fw-bold fs-1 text-dark me-5" >First Electronic Market</NavLink></Navbar.Brand>
                         <div className='d-flex'>
                         <Login />
                         <Signup />

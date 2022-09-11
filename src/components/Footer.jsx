@@ -40,7 +40,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-copyright text-center pt-2 pb-4">© 2020 Copyright:
-        <a className="a"  href="https://bootstrap.com/"> Bootstrap.com</a>
+        <a className="a"  href="#"> My Site</a>
       </div>
 
     </footer>

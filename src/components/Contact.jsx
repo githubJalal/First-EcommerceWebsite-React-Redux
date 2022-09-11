@@ -13,10 +13,10 @@ const Contact = () => {
 
         <div className="row">
           <div className="col-md-5 d-flex justify-content-center">
-            <img src="/assets/images/22.jpg" alt="Contact Us" height="400px" width="400px" />
+            <img src="/assets/images/contactus.jpg" alt="Contact Us" height="400px" width="400px" />
           </div>
           <div className="col-md-6">
-            <form action="">
+            <form action="" onSubmit={(event) => event.preventDefault()}>
               <div class="mb-3">
                 <label for="exampleForm" class="form-label">Full Name</label>
                 <input type="text" class="form-control" id="exampleForm" placeholder="John Smith"/>
